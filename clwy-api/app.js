@@ -3,6 +3,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 require('dotenv').config();
+const adminAuth = require('./middlewares/admin-auth');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -34,13 +35,13 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 // 后台路由配置
-app.use('/admin/articles', adminArticlesRouter);
-app.use('/admin/categories', adminCategoriesRouter);
-app.use('/admin/settings', adminSettingsRouter);
-app.use('/admin/users', adminUsersRouter);
-app.use('/admin/courses', adminCoursesRouter);
-app.use('/admin/chapters', adminChaptersRouter);
-app.use('/admin/charts', adminChartsRouter);
+app.use('/admin/articles',adminAuth,adminArticlesRouter);
+app.use('/admin/categories',adminAuth,adminCategoriesRouter);
+app.use('/admin/settings',adminAuth,adminSettingsRouter);
+app.use('/admin/users',adminAuth ,adminUsersRouter);
+app.use('/admin/courses',adminAuth ,adminCoursesRouter);
+app.use('/admin/chapters',adminAuth,adminChaptersRouter);
+app.use('/admin/charts',adminAuth,adminChartsRouter);
 app.use('/admin/auth', adminAuthRouter);
 
 
