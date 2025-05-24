@@ -122,7 +122,6 @@ router.put('/:id', async function (req, res) {
 router.delete('/:id', async function (req, res) {
     try {
         const user = await getUser(req);
-
         await user.destroy();
         success(res, '删除用户成功。');
     } catch (error) {
