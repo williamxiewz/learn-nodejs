@@ -15,15 +15,20 @@ module.exports = (sequelize, DataTypes) => {
   }
   Category.init({
     name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: { msg: '名称已存在，请选择其他名称。' },
-      validate: {
-        notNull: { msg: '名称必须填写。' },
-        notEmpty: { msg: '名称不能为空。' },
-        len: { args: [2, 45], msg: '长度必须是2 ~ 45之间。' }
-      }
-    },
+          type: DataTypes.STRING,
+          allowNull: false,
+          validate: {
+            notNull: { msg: '名称必须填写。' },
+            notEmpty: { msg: '名称不能为空。' },
+            len: { args: [2, 45], msg: '长度必须是2 ~ 45之间。' },
+            async isUnique(value) {
+              const category = await Category.findOne({ where: { name: value } })
+              if (category) {
+                throw new Error('名称已存在，请选择其他名称。');
+              }
+            }
+          }
+        },
     rank: {
       type: DataTypes.INTEGER,
       allowNull: false,
