@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/learn-nodejs.iml" filepath="$PROJECT_DIR$/.idea/learn-nodejs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/clwy-api.iml" filepath="$PROJECT_DIR$/.idea/clwy-api.iml" />
     </modules>
   </component>
 </project>
