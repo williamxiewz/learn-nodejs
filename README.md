@@ -24,15 +24,15 @@ SECRET=你的秘钥
 
 在命令行中运行
 
-```shell
-    node
- ```
+```
+node
+```
 
 进入交互模式后，运行
 
-```shell
-    const crypto = require('crypto');
-    console.log(crypto.randomBytes(32).toString('hex'));
+```js
+const crypto = require('crypto');
+console.log(crypto.randomBytes(32).toString('hex'));
 ```
 
 复制得到的秘钥，并填写到`.env`文件中的`SECRET`配置。
@@ -43,8 +43,8 @@ SECRET=你的秘钥
 
 项目使用 Docker 容器运行 MySQL 数据库。安装好 Docker 后，可直接启动 MySQL。
 
-```shell
-    docker-compose up -d
+```
+docker-compose up -d
 ```
 
 如需使用自行安装的 MySQL，需要修改`config/config.json`文件中的数据库用户名与密码。
@@ -60,8 +60,7 @@ SECRET=你的秘钥
 
 ## 安装与运行
 
-```shell
-
+```
 # 安装项目依赖包
 npm i
 
@@ -76,7 +75,6 @@ npx sequelize-cli db:seed:all
 
 # 启动服务
 npm start
- 
 ```
 
 访问地址：[http://localhost:3000](http://localhost:3000)，详情请看接口文档。
