@@ -38,6 +38,22 @@ function failure(res, error) {
         });
     }
 
+    if (error.name === 'BadRequestError') {
+        return res.status(400).json({
+            status: false,
+            message: '请求参数错误',
+            errors: [error.message]
+        });
+    }
+
+    if (error.name === 'UnauthorizedError') {
+        return res.status(401).json({
+            status: false,
+            message: '认证失败',
+            errors: [error.message]
+        });
+    }
+
     if (error.name === 'NotFoundError') {
         return res.status(404).json({
             status: false,
@@ -51,6 +67,10 @@ function failure(res, error) {
         message: '服务器错误',
         errors: [error.message]
     });
+
+
+
+
 }
 
 module.exports = {
